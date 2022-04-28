@@ -4,8 +4,6 @@ prompt_context() {
   fi
 }
 
-eval "$(rbenv init -)"
-
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -76,7 +74,11 @@ ZSH_THEME="agnoster"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(
+  git
+  zsh-syntax-highlighting
+  zsh-autosuggestions
+)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -105,19 +107,3 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-
-source /Users/joungsik/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-
-export PATH="/usr/local/opt/protobuf@3.7/bin:$PATH"
-
-export LDFLAGS="-L/usr/local/opt/protobuf@3.7/lib"
-export CPPFLAGS="-I/usr/local/opt/protobuf@3.7/include"
-
-export PKG_CONFIG_PATH="/usr/local/opt/protobuf@3.7/lib/pkgconfig"
-
-export ANDROID_PLATFORM_TOOLS="/Users/joungsik/Library/Android/sdk/platform-tools/"
-export PATH="$ANDROID_PLATFORM_TOOLS:$PATH"
