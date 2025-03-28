@@ -1,9 +1,3 @@
-prompt_context() {
-  if [[ "$USER" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
-    prompt_segment black default "$USER"
-  fi
-}
-
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -81,6 +75,7 @@ plugins=(
   copybuffer
   zsh-syntax-highlighting
   zsh-autosuggestions
+  history-substring-search
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -90,14 +85,14 @@ source $ZSH/oh-my-zsh.sh
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+export LANG=ko_KR.UTF-8
 
 # Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='vim'
+else
+  export EDITOR='vim'
+fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -110,3 +105,14 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+# 명령어 실행 시간이 10초 이상 걸리면 실행 시간을 보고합니다
+REPORTTIME=10
+
+# 프롬프트 컨텍스트 함수: 현재 사용자 이름을 표시합니다
+# 기본 사용자가 아니거나 SSH 연결을 통해 접속한 경우에만 사용자 이름을 표시합니다
+prompt_context() {
+  if [[ "$USER" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
+    prompt_segment black default "$USER"
+  fi
+}
